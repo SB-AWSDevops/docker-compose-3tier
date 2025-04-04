@@ -1,0 +1,50 @@
+version: "3.8"
+
+services:
+  db:
+    image: postgres:latest
+    container_name: grocery_db
+    env_file:
+      - ../db/.env
+    networks:
+      - grocery_network
+    volumes:
+      - db-data:/var/lib/postgresql/data
+    healthcheck:  # Ensures DB is ready before starting backend
+      test: ["CMD-SHELL", "pg_isready -U postgres"]
+      interval: 10s
+      retries: 5
+      timeout: 5s
+
+  frontend:
+    build: ../frontend
+    container_name: grocery_frontend
+    ports:
+      - 9090:9090
+    networks:
+      - grocery_network
+    depends_on:
+      - backend
+    volumes:
+      - frontend-data:/usr/share/nginx/html 
+
+  backend:
+    build: ../backend
+    container_name: grocery_backend
+    ports:
+     - 4000:4000
+    networks:
+      - grocery_network
+    depends_on:
+      db:
+       condition: service_healthy
+    volumes:
+      - backend-data:/app
+
+networks:
+  grocery_network:
+
+volumes:
+  frontend-data:
+  backend-data:
+  db-data:

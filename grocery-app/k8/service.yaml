@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: my-chatbot-service
+spec:
+  selector:
+    app: ai-chatbot
+  ports:
+    - protocol: TCP
+      port: 8005
+      targetPort: 5000
+      nodePort: 30007
+  type: NodePort

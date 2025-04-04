@@ -1,0 +1,29 @@
+body {
+    font-family: Arial, sans-serif;
+    max-width: 600px;
+    margin: auto;
+    text-align: center;
+}
+
+form input {
+    margin: 5px;
+    padding: 10px;
+}
+
+button {
+    padding: 10px;
+    background-color: green;
+    color: white;
+    border: none;
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+}
+
+li {
+    margin: 10px 0;
+    display: flex;
+    justify-content: space-between;
+}
