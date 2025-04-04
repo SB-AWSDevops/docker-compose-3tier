@@ -1,1 +1,0 @@
-# docker-compose-3tier
