@@ -1,5 +1,7 @@
 # Grocery Management Application
-This app is built on 3 - tier Architechture
+
+This 3 tier grocery app Built and Deployed in a Dockerized Environment using Docker Compose
+
 # Tech Stack: 
 **Frontend:** Nginx (serving static HTML, CSS, Vanilla JS)
 
