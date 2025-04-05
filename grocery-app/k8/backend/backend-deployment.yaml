@@ -1,0 +1,38 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: grocery-backend
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: grocery-backend
+  template:
+    metadata:
+      labels:
+        app: grocery-backend
+    spec:
+      containers:
+        - name: grocery-backend
+          image: docker_backend:latest
+          imagePullPolicy: Never   # Local image use cheyyali
+          ports:
+            - containerPort: 4000
+          envFrom:
+            - configMapRef:
+                name: backend-config
+            - secretRef:
+                name: backend-secret
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: grocery-backend-service
+spec:
+  selector:
+    app: grocery-backend
+  ports:
+    - protocol: TCP
+      port: 4000
+      targetPort: 4000
+  type: ClusterIP
