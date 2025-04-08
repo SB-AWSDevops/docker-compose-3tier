@@ -1,27 +1,13 @@
-# ---------- Stage 1: Build ----------
-# Use official Node.js image as base
-FROM node:18 as base
+FROM node:18-alpine
 
-# Set working directory inside container
 WORKDIR /app
 
-# Copy package.json and package-lock.json first (for better caching)
 COPY package*.json ./
 
-# Install dependencies
 RUN npm install
 
-
-# Copy the rest of the backend files
 COPY . .
 
-# ---------- Stage 2: Production ----------
-FROM gcr.io/distroless/nodejs18
+EXPOSE 5000
 
-WORKDIR /app
-
-COPY --from=base /app /app
-
-CMD ["server.js"]
-
-
+CMD ["node", "server.js"]

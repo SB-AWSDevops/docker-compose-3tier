@@ -32,12 +32,14 @@ services:
     build: ../backend
     container_name: grocery_backend
     ports:
-     - 4000:4000
+     - 5000:5000
     networks:
       - grocery_network
     depends_on:
       db:
        condition: service_healthy
+    env_file:               # 👈 ADD THIS
+      - ../backend/.env 
     volumes:
       - backend-data:/app
 

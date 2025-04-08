@@ -17,7 +17,7 @@ const pool = new Pool({
     host: process.env.POSTGRES_HOST,
     database: process.env.POSTGRES_DB,
     password: process.env.POSTGRES_PASSWORD,
-    port: process.env.POSTGRES_PORT
+    port: parseInt(process.env.POSTGRES_PORT)
 });
 
 // Ensure database connection before creating table
@@ -93,7 +93,7 @@ app.delete("/groceries/:id", async (req, res) => {
 });
 
 // Start server
-const PORT = process.env.PORT || 5000;
+const PORT = 5000;
 app.listen(PORT, "0.0.0.0", () => {
     console.log(`Server running on port ${PORT}`);
   });
