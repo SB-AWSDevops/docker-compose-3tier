@@ -46,7 +46,7 @@ I have added kubernetes manifest files now, so now grocery app can be deployed i
 - kubectl apply -f ./db/ -f ./backend/ -f ./frontend/
 - now in minikube , we need to do port forwarding for frontend 
 - kubectl port-forward svc/grocery-frontend-service 9090:9090
-- also port forward to backend to test the api - localhost:4000/groceries
-- kubectl port-forward svc/grocery-backend-service 4000:4000
+- also port forward to backend to test the api - localhost:5000/groceries
+- kubectl port-forward svc/grocery-backend-service 5000:5000
 - now you can run the app in browser
 
