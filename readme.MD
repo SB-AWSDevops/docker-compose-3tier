@@ -14,6 +14,15 @@ This 3 tier grocery app Built and Deployed in a Dockerized Environment using Doc
 # Clone the Repo
 git clone https://github.com/SB-AWSDevops/docker-compose-3tier
 
+## Note: This project uses environment variables from .env files for backend and database.
+
+We don’t commit actual .env files to Git for security reasons.
+
+# What You Need To Do?
+Wherever docker-compose.yml or any service expects an .env file,
+You must manually create it in your local machine or deployment environment.
+Without it, services like backend or database won’t work correctly.
+
 cd grocery-app/docker
 # Start the App with Docker Compose
 docker-compose up --build
