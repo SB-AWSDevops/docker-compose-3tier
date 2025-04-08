@@ -2,7 +2,10 @@ const express = require("express");
 const cors = require("cors");
 const bodyParser = require("body-parser");
 const { Pool } = require("pg");
-require("dotenv").config(); // Load .env variables
+if (process.env.NODE_ENV !== 'production') {
+    require('dotenv').config();
+  }
+  
 
 const app = express();
 app.use(cors());

@@ -9,10 +9,8 @@ WORKDIR /app
 COPY package*.json ./
 
 # Install dependencies
-RUN npm install && npm install dotenv
+RUN npm install
 
-# Copy .env separately (before everything else)
-COPY .env .env  
 
 # Copy the rest of the backend files
 COPY . .
@@ -24,7 +22,6 @@ WORKDIR /app
 
 COPY --from=base /app /app
 
+CMD ["server.js"]
 
-# Start the backend server
-CMD ["node", "server.js"]
 
